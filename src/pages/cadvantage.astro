@@ -1,0 +1,77 @@
+---
+// CADVANTAGE — /cadvantage
+// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
+// Description page only. The web build / embed is a separate Phase 2 ticket.
+// Do NOT import, embed, or reference the CADVANTAGE React Native app or its code.
+// Anything marked [PLACEHOLDER — Sol] awaits his words.
+const pages = [
+  { href: "/", label: "Home" },
+  { href: "/story", label: "The Work" },
+  { href: "/writing", label: "Writing" },
+  { href: "/cadvantage", label: "CADVANTAGE" },
+  { href: "/book", label: "The Book" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CADVANTAGE · Check Your Datum</title>
+    <meta
+      name="description"
+      content="[PLACEHOLDER — Sol: meta description for the CADVANTAGE page.]"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- OPENING — what it is, one line -->
+      <section>
+        <h1>CADVANTAGE</h1>
+        <p>[PLACEHOLDER — Sol: what CADVANTAGE is, one line.]</p>
+      </section>
+
+      <!-- WHAT IT DOES -->
+      <section>
+        <h2>What It Does</h2>
+        <p>[PLACEHOLDER — Sol: description of what CADVANTAGE does and who it's for.]</p>
+      </section>
+
+      <!-- SCREENSHOTS — placeholder; real images are a separate ticket -->
+      <section>
+        <p>[PLACEHOLDER — screenshots]</p>
+      </section>
+
+      <!-- TRY IT SOON — Phase 2 web build -->
+      <section>
+        <h2>Try it soon</h2>
+        <p>[PLACEHOLDER — Sol: try-in-browser coming in Phase 2.]</p>
+      </section>
+
+      <!-- THE ONE CTA: join the list -->
+      <section>
+        <h2>Join the list</h2>
+        <p>[PLACEHOLDER — Sol: the reason-to-subscribe line goes here.]</p>
+        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+        <form>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <button type="submit">Join</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Thomas Craft · checkyourdatum.com</p>
+    </footer>
+  </body>
+</html>
