@@ -1,13 +1,30 @@
 ---
-// The Work — /story
-// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
-// Anything marked [PLACEHOLDER — Sol] awaits his words.
-const pages = [
-  { href: "/", label: "Home" },
-  { href: "/story", label: "The Work" },
+import "../styles/datum-pages.css";
+
+const navItems = [
   { href: "/writing", label: "Writing" },
+  { href: "/story", label: "Story", current: true },
+  { href: "/book", label: "Book" },
   { href: "/cadvantage", label: "CADVANTAGE" },
-  { href: "/book", label: "The Book" },
+  { href: "#join", label: "Join" },
+];
+
+const principles = [
+  {
+    title: "Reference first",
+    kicker: "Datum",
+    copy: "Start with the surface that tells the truth. The rest of the work depends on it.",
+  },
+  {
+    title: "Attention over noise",
+    kicker: "Practice",
+    copy: "DATUM is built for careful reading, useful tools, and the discipline of seeing what is actually there.",
+  },
+  {
+    title: "Record the marks",
+    kicker: "Writing",
+    copy: "The work is easier to trust when the setup, the mistakes, and the corrections are written down plainly.",
+  },
 ];
 ---
 
@@ -16,61 +33,126 @@ const pages = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Work · Check Your Datum</title>
+    <title>The Story | DATUM</title>
     <meta
       name="description"
-      content="[PLACEHOLDER — Sol: meta description for The Work page.]"
+      content="The story behind DATUM: a public writing and tools system by Thomas Craft built from reference, craft, attention, and shop truth."
     />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
-        </ul>
-      </nav>
-    </header>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="/" aria-label="DATUM home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DATUM</span>
+        </a>
 
-    <main>
-      <!-- OPENING — who the voice is, no legal name -->
-      <section>
-        <h1>The Work</h1>
-        <p>[PLACEHOLDER — Sol: opening — who the voice is, where it comes from, no legal name.]</p>
-      </section>
+        <nav class="site-nav" aria-label="Primary navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={item.current ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
 
-      <!-- THE TRADE — tool and die, the bench, the discipline -->
-      <section>
-        <h2>The Trade</h2>
-        <p>[PLACEHOLDER — Sol: tool and die, the bench, the discipline — what the trade actually is and what it demands.]</p>
-      </section>
+      <main>
+        <section class="page-hero" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">DATUM / by Thomas Craft</p>
+            <h1 id="page-title">The Story</h1>
+            <p class="lead">
+              DATUM is a system built from reference, craft, shop truth, attention, and writing.
+            </p>
+            <p class="body-copy">
+              It comes from a simple working belief: if the reference is false, the correction
+              will wander. That is true at the bench, in the notebook, and in the life around both.
+            </p>
+          </div>
 
-      <!-- THE STANDARD — Michael, the standard the work is measured against -->
-      <section>
-        <h2>The Standard</h2>
-        <p>[PLACEHOLDER — Sol: Michael, the standard the work is measured against — the person and what he represents.]</p>
-      </section>
+          <div class="hero-plate" aria-label="Abstract datum reference plate">
+            <span class="plate-label">Story / Setup</span>
+          </div>
+        </section>
 
-      <!-- WHY THIS EXISTS — truing the mind the way you true a part -->
-      <section>
-        <h2>Why This Exists</h2>
-        <p>[PLACEHOLDER — Sol: truing the mind the way you true a part — the through-line from the bench to everything else.]</p>
-      </section>
+        <section class="section" aria-labelledby="about-title">
+          <div class="split-feature">
+            <div>
+              <p class="eyebrow">Public voice</p>
+              <h2 id="about-title">Thomas Craft</h2>
+            </div>
+            <div class="feature-copy">
+              <p>
+                Thomas Craft is the public author and maker voice behind DATUM. The work sits
+                where shop practice, honest measurement, mental clarity, and literary attention meet.
+              </p>
+              <p>
+                This is not a performance of toughness or a brand costume. It is a working
+                notebook made public: what the bench teaches, what the writing keeps, and what
+                becomes clearer when the datum is checked.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <!-- THE ONE CTA: join the list -->
-      <section>
-        <h2>Join the list</h2>
-        <p>[PLACEHOLDER — Sol: the reason-to-subscribe line goes here.]</p>
-        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
-        <form>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <button type="submit">Join</button>
-        </form>
-      </section>
-    </main>
+        <section class="section" aria-labelledby="principles-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">How it works</p>
+              <h2 id="principles-title">The standard is practical.</h2>
+            </div>
+            <p>DATUM keeps the language grounded because the work itself is grounded.</p>
+          </div>
 
-    <footer>
-      <p>Thomas Craft · checkyourdatum.com</p>
-    </footer>
+          <div class="card-grid three">
+            {
+              principles.map((item) => (
+                <article class="card">
+                  <p class="kicker">{item.kicker}</p>
+                  <h3>{item.title}</h3>
+                  <span class="rule" aria-hidden="true"></span>
+                  <p>{item.copy}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="exists-title">
+          <div class="quote-band">
+            <p id="exists-title">
+              Start from something true. Measure honestly. Build carefully. Leave it better.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="join" aria-labelledby="join-title">
+          <div class="join-block">
+            <div>
+              <p class="eyebrow">Bench Notes</p>
+              <h2 id="join-title">Follow the work.</h2>
+              <p>
+                Short dispatches on craft, clarity, tools, and the work of checking your datum.
+              </p>
+            </div>
+
+            <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+            <form class="signup-form">
+              <label for="email">Email address</label>
+              <div class="form-row">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Thomas Craft &middot; checkyourdatum.com</p>
+      </footer>
+    </div>
   </body>
 </html>

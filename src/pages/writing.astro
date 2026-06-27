@@ -1,14 +1,53 @@
 ---
-// Writing — /writing
-// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
-// TODO: content collection for posts — Sophia's architecture call.
-// Anything marked [PLACEHOLDER — Sol] awaits his words.
-const pages = [
-  { href: "/", label: "Home" },
-  { href: "/story", label: "The Work" },
-  { href: "/writing", label: "Writing" },
+import "../styles/datum-pages.css";
+
+const navItems = [
+  { href: "/writing", label: "Writing", current: true },
+  { href: "/story", label: "Story" },
+  { href: "/book", label: "Book" },
   { href: "/cadvantage", label: "CADVANTAGE" },
-  { href: "/book", label: "The Book" },
+  { href: "#join", label: "Join" },
+];
+
+const lanes = [
+  {
+    title: "True Your Mind",
+    kicker: "Reference",
+    copy: "Essays on reference points, grief, discipline, and the work of getting honest before the next move.",
+  },
+  {
+    title: "Trade Lessons",
+    kicker: "Shop",
+    copy: "Machining notes, bench lessons, tolerances, mistakes, and the kind of clarity a part demands.",
+  },
+  {
+    title: "The Dispatch",
+    kicker: "Field Notes",
+    copy: "Short observations from the work, the tools, the yard, and the life around the bench.",
+  },
+  {
+    title: "Bench Notes",
+    kicker: "Letters",
+    copy: "A tighter feed for practical thoughts on craft, attention, tools, and checking your datum.",
+  },
+];
+
+const articles = [
+  {
+    title: "When the Reference Is Wrong",
+    copy: "A note on bad assumptions, honest setup, and why every clean cut still depends on the first surface.",
+    meta: "True Your Mind",
+  },
+  {
+    title: "The Part Does Not Care",
+    copy: "Shop-floor truth about measurement, pride, correction, and the discipline of letting the work answer.",
+    meta: "Trade Lessons",
+  },
+  {
+    title: "Amber Light on the Bench",
+    copy: "A field note on closing the day, reading the marks, and leaving the work better than it started.",
+    meta: "The Dispatch",
+  },
 ];
 ---
 
@@ -17,51 +56,123 @@ const pages = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Writing · Check Your Datum</title>
+    <title>Writing | DATUM</title>
     <meta
       name="description"
-      content="[PLACEHOLDER — Sol: meta description for the Writing page.]"
+      content="Writing from DATUM by Thomas Craft: essays, field notes, shop wisdom, and reference points for checking your datum."
     />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
-        </ul>
-      </nav>
-    </header>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="/" aria-label="DATUM home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DATUM</span>
+        </a>
 
-    <main>
-      <!-- INTRO — what the writing/dispatch is -->
-      <section>
-        <h1>Writing</h1>
-        <p>[PLACEHOLDER — Sol: intro to the writing and dispatch — what it is, what it covers, why to read it.]</p>
-      </section>
+        <nav class="site-nav" aria-label="Primary navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={item.current ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
 
-      <!-- POST LIST — static placeholder; real list wired in when content collection is set up -->
-      <section>
-        <ul>
-          <li>[PLACEHOLDER — post title]</li>
-          <li>[PLACEHOLDER — post title]</li>
-        </ul>
-      </section>
+      <main>
+        <section class="page-hero" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">Check Your Datum / by Thomas Craft</p>
+            <h1 id="page-title">Writing</h1>
+            <p class="lead">
+              Essays, field notes, reference points, shop wisdom, clarity, and the work
+              of checking your datum before the next thing gets built.
+            </p>
+            <p class="body-copy">
+              DATUM treats writing like setup work: slow enough to find the reference,
+              direct enough to be useful, and honest enough to leave a mark.
+            </p>
+          </div>
 
-      <!-- THE ONE CTA: join the list -->
-      <section>
-        <h2>Join the list</h2>
-        <p>[PLACEHOLDER — Sol: the reason-to-subscribe line goes here.]</p>
-        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
-        <form>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <button type="submit">Join</button>
-        </form>
-      </section>
-    </main>
+          <div class="hero-plate" aria-label="Abstract datum reference plate">
+            <span class="plate-label">Writing / Reference</span>
+          </div>
+        </section>
 
-    <footer>
-      <p>Thomas Craft · checkyourdatum.com</p>
-    </footer>
+        <section class="section" aria-labelledby="lanes-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Content lanes</p>
+              <h2 id="lanes-title">Four ways into the work.</h2>
+            </div>
+            <p>Each lane starts from the same rule: measure honestly, then write from there.</p>
+          </div>
+
+          <div class="card-grid">
+            {
+              lanes.map((lane) => (
+                <article class="card">
+                  <p class="kicker">{lane.kicker}</p>
+                  <h3>{lane.title}</h3>
+                  <span class="rule" aria-hidden="true"></span>
+                  <p>{lane.copy}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="articles-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Articles</p>
+              <h2 id="articles-title">Notes in the rack.</h2>
+            </div>
+            <p>Static article placeholders for now. The full publishing system can come later.</p>
+          </div>
+
+          <div class="article-list">
+            {
+              articles.map((article) => (
+                <article class="article-card">
+                  <p class="kicker">{article.meta}</p>
+                  <h3>{article.title}</h3>
+                  <span class="rule" aria-hidden="true"></span>
+                  <p>{article.copy}</p>
+                  <p class="article-meta">Draft placeholder</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="section" id="join" aria-labelledby="join-title">
+          <div class="join-block">
+            <div>
+              <p class="eyebrow">Bench Notes</p>
+              <h2 id="join-title">Get the Bench Notes</h2>
+              <p>
+                Short dispatches on craft, clarity, tools, and the work of checking your datum.
+              </p>
+            </div>
+
+            <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+            <form class="signup-form">
+              <label for="email">Email address</label>
+              <div class="form-row">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Thomas Craft &middot; checkyourdatum.com</p>
+      </footer>
+    </div>
   </body>
 </html>

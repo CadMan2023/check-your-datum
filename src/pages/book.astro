@@ -1,13 +1,35 @@
 ---
-// True Your Mind — /book
-// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
-// Anything marked [PLACEHOLDER — Sol] awaits his words.
-const pages = [
-  { href: "/", label: "Home" },
-  { href: "/story", label: "The Work" },
+import "../styles/datum-pages.css";
+
+const navItems = [
   { href: "/writing", label: "Writing" },
+  { href: "/story", label: "Story" },
+  { href: "/book", label: "Book", current: true },
   { href: "/cadvantage", label: "CADVANTAGE" },
-  { href: "/book", label: "The Book" },
+  { href: "#join", label: "Join" },
+];
+
+const sections = [
+  {
+    title: "The Datum",
+    copy: "Finding the reference point before trying to correct the reading.",
+  },
+  {
+    title: "The Gauge",
+    copy: "Learning what the indicator shows, what it cannot show, and where pride bends the needle.",
+  },
+  {
+    title: "The Work",
+    copy: "Returning to the bench with discipline, repetition, and less romance about the hard parts.",
+  },
+  {
+    title: "The Record",
+    copy: "Writing down the setup, the miss, the correction, and the truth that survived the day.",
+  },
+  {
+    title: "The Life Test",
+    copy: "Letting the practice leave the page and prove itself in ordinary pressure.",
+  },
 ];
 ---
 
@@ -16,49 +38,120 @@ const pages = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>True Your Mind · Check Your Datum</title>
+    <title>True Your Mind | DATUM</title>
     <meta
       name="description"
-      content="[PLACEHOLDER — Sol: meta description for the True Your Mind page.]"
+      content="True Your Mind is a DATUM book project by Thomas Craft about reference, discipline, grief, setup work, and coming back into alignment."
     />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
-        </ul>
-      </nav>
-    </header>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="/" aria-label="DATUM home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DATUM</span>
+        </a>
 
-    <main>
-      <!-- OPENING — the book, one line -->
-      <section>
-        <h1>True Your Mind</h1>
-        <p>[PLACEHOLDER — Sol: the book, one line.]</p>
-      </section>
+        <nav class="site-nav" aria-label="Primary navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={item.current ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
 
-      <!-- WHAT IT IS -->
-      <section>
-        <h2>What It Is</h2>
-        <p>[PLACEHOLDER — Sol: what the book is — the premise, the argument, what a reader walks away with.]</p>
-      </section>
+      <main>
+        <section class="page-hero" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">Book project / DATUM</p>
+            <h1 id="page-title">True Your Mind</h1>
+            <p class="lead">
+              A plainspoken book project about reference, discipline, grief, setup work,
+              and coming back into alignment.
+            </p>
+            <p class="body-copy">
+              The book treats clarity as a practice, not a mood. Find the datum, read the
+              gauge, make the correction, and keep a record honest enough to return to.
+            </p>
+          </div>
 
-      <!-- GET NOTIFIED — notify-when-it-ships; same signup as the list -->
-      <section>
-        <h2>Get Notified</h2>
-        <p>[PLACEHOLDER — Sol: notify-when-it-ships line.]</p>
-        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
-        <form>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <button type="submit">Join</button>
-        </form>
-      </section>
-    </main>
+          <div class="hero-plate" aria-label="Abstract datum reference plate">
+            <span class="plate-label">Book / In progress</span>
+          </div>
+        </section>
 
-    <footer>
-      <p>Thomas Craft · checkyourdatum.com</p>
-    </footer>
+        <section class="section" aria-labelledby="what-title">
+          <div class="split-feature">
+            <div>
+              <p class="eyebrow">What it is</p>
+              <h2 id="what-title">A deeper pass through the datum.</h2>
+            </div>
+            <div class="feature-copy">
+              <p>
+                True Your Mind is being shaped as the long-form DATUM project: part shop
+                philosophy, part field record, part manual for checking the reference before
+                trusting the result.
+              </p>
+              <p>
+                It is not a finished sales page. It is a live book project, built carefully,
+                with the same standard as the rest of DATUM: start true, measure honestly,
+                and leave the work better.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="sections-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Possible sections</p>
+              <h2 id="sections-title">The working table.</h2>
+            </div>
+            <p>Early structure, held lightly until the manuscript earns its final shape.</p>
+          </div>
+
+          <div class="sequence-grid">
+            {
+              sections.map((section, index) => (
+                <article class="sequence-card">
+                  <p class="kicker">0{index + 1}</p>
+                  <h3>{section.title}</h3>
+                  <span class="rule" aria-hidden="true"></span>
+                  <p>{section.copy}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="join-title" id="join">
+          <div class="join-block">
+            <div>
+              <p class="eyebrow">Project notes</p>
+              <h2 id="join-title">Get notified as it takes shape.</h2>
+              <p>
+                Bench Notes will carry updates from the writing, the shop, and the DATUM system.
+              </p>
+            </div>
+
+            <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+            <form class="signup-form">
+              <label for="email">Email address</label>
+              <div class="form-row">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Thomas Craft &middot; checkyourdatum.com</p>
+      </footer>
+    </div>
   </body>
 </html>

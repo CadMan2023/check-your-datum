@@ -1,15 +1,19 @@
 ---
-// CADVANTAGE — /cadvantage
-// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
-// Description page only. The web build / embed is a separate Phase 2 ticket.
-// Do NOT import, embed, or reference the CADVANTAGE React Native app or its code.
-// Anything marked [PLACEHOLDER — Sol] awaits his words.
-const pages = [
-  { href: "/", label: "Home" },
-  { href: "/story", label: "The Work" },
+import "../styles/datum-pages.css";
+
+const navItems = [
   { href: "/writing", label: "Writing" },
-  { href: "/cadvantage", label: "CADVANTAGE" },
-  { href: "/book", label: "The Book" },
+  { href: "/story", label: "Story" },
+  { href: "/book", label: "Book" },
+  { href: "/cadvantage", label: "CADVANTAGE", current: true },
+  { href: "#join", label: "Join" },
+];
+
+const utilityNotes = [
+  "Calculators for common shop questions and repeatable checks.",
+  "Setup thinking that keeps geometry, reference, and result in view.",
+  "Live geometry ideas shaped around clarity instead of software spectacle.",
+  "Tools built from real shop use, then tightened until they earn a place.",
 ];
 ---
 
@@ -18,60 +22,113 @@ const pages = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CADVANTAGE · Check Your Datum</title>
+    <title>CADVANTAGE | DATUM</title>
     <meta
       name="description"
-      content="[PLACEHOLDER — Sol: meta description for the CADVANTAGE page.]"
+      content="CADVANTAGE is the secondary DATUM tools lane for practical shop utilities, setup thinking, live geometry, and toolmaker-built software."
     />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
-        </ul>
-      </nav>
-    </header>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="/" aria-label="DATUM home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DATUM</span>
+        </a>
 
-    <main>
-      <!-- OPENING — what it is, one line -->
-      <section>
-        <h1>CADVANTAGE</h1>
-        <p>[PLACEHOLDER — Sol: what CADVANTAGE is, one line.]</p>
-      </section>
+        <nav class="site-nav" aria-label="Primary navigation">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={item.current ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
 
-      <!-- WHAT IT DOES -->
-      <section>
-        <h2>What It Does</h2>
-        <p>[PLACEHOLDER — Sol: description of what CADVANTAGE does and who it's for.]</p>
-      </section>
+      <main>
+        <section class="page-hero" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">Tools from the bench</p>
+            <h1 id="page-title">CADVANTAGE</h1>
+            <p class="lead">
+              Practical shop utilities and toolmaker-built software connected to DATUM,
+              but secondary to the writing and the work.
+            </p>
+            <p class="body-copy">
+              CADVANTAGE is the tools lane: calculators, setup thinking, live geometry,
+              and shop clarity in broad, useful forms. Built from real use, not theory alone.
+            </p>
+          </div>
 
-      <!-- SCREENSHOTS — placeholder; real images are a separate ticket -->
-      <section>
-        <p>[PLACEHOLDER — screenshots]</p>
-      </section>
+          <div class="hero-plate" aria-label="Abstract datum reference plate">
+            <span class="plate-label">Tools / Secondary lane</span>
+          </div>
+        </section>
 
-      <!-- TRY IT SOON — Phase 2 web build -->
-      <section>
-        <h2>Try it soon</h2>
-        <p>[PLACEHOLDER — Sol: try-in-browser coming in Phase 2.]</p>
-      </section>
+        <section class="section" aria-labelledby="tools-title">
+          <div class="tools-panel">
+            <div>
+              <p class="eyebrow">What belongs here</p>
+              <h2 id="tools-title">Software that respects the bench.</h2>
+              <p>
+                The point is not to overbuild a platform. The point is to make small,
+                accurate utilities that help the user think clearly before the cut, setup,
+                sketch, or check.
+              </p>
+            </div>
+            <ul class="tool-list">
+              {utilityNotes.map((note) => <li>{note}</li>)}
+            </ul>
+          </div>
+        </section>
 
-      <!-- THE ONE CTA: join the list -->
-      <section>
-        <h2>Join the list</h2>
-        <p>[PLACEHOLDER — Sol: the reason-to-subscribe line goes here.]</p>
-        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
-        <form>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <button type="submit">Join</button>
-        </form>
-      </section>
-    </main>
+        <section class="section" aria-labelledby="coming-title">
+          <div class="split-feature">
+            <div>
+              <p class="eyebrow">Coming work</p>
+              <h2 id="coming-title">Tools are coming from real shop use.</h2>
+            </div>
+            <div class="feature-copy">
+              <p>
+                CADVANTAGE will stay grounded: no launch-date theater, no inflated promises,
+                no account system bolted on before the tools prove they deserve it.
+              </p>
+              <p>
+                The lane is for practical utilities that help a maker check the reference,
+                understand the geometry, and move with less confusion.
+              </p>
+              <a class="text-link" href="/writing">Read the DATUM notes</a>
+            </div>
+          </div>
+        </section>
 
-    <footer>
-      <p>Thomas Craft · checkyourdatum.com</p>
-    </footer>
+        <section class="section" aria-labelledby="join-title" id="join">
+          <div class="join-block">
+            <div>
+              <p class="eyebrow">Tool notes</p>
+              <h2 id="join-title">Follow the build.</h2>
+              <p>
+                Bench Notes will carry practical updates as the tools lane becomes ready to show.
+              </p>
+            </div>
+
+            <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+            <form class="signup-form">
+              <label for="email">Email address</label>
+              <div class="form-row">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Thomas Craft &middot; checkyourdatum.com</p>
+      </footer>
+    </div>
   </body>
 </html>
