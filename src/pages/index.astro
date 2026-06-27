@@ -1,0 +1,60 @@
+---
+// Home — The Bridge (public name: Check Your Datum)
+// Structure only. Look, brand, and copy are Sol's lane (see CLAUDE.md).
+// The two hero lines are Sol's existing approved copy.
+// Anything marked [PLACEHOLDER — Sol] awaits his words.
+const pages = [
+  { href: "/", label: "Home" },
+  { href: "/story", label: "The Work" },
+  { href: "/writing", label: "Writing" },
+  { href: "/cadvantage", label: "CADVANTAGE" },
+  { href: "/book", label: "The Book" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Check Your Datum</title>
+    <meta
+      name="description"
+      content="A machinist's way to true the mind, the work, and the life built from both."
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          {pages.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO — Sol's approved copy -->
+      <section>
+        <h1>Check Your Datum</h1>
+        <p>A machinist's way to true the mind, the work, and the life built from both.</p>
+        <p>If you measure from the wrong reference, every correction after that can still be wrong.</p>
+      </section>
+
+      <!-- THE ONE CTA: join the list -->
+      <section>
+        <h2>Join the list</h2>
+        <p>[PLACEHOLDER — Sol: the reason-to-subscribe line goes here.]</p>
+        <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+        <form>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <button type="submit">Join</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Thomas Craft · checkyourdatum.com</p>
+    </footer>
+  </body>
+</html>
