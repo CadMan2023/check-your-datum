@@ -52,6 +52,10 @@ const utilityNotes = [
           <div>
             <p class="eyebrow">Tools from the bench</p>
             <h1 id="page-title">CADVANTAGE</h1>
+            <p class="status-badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              Coming Soon to Google Play
+            </p>
             <p class="lead">
               Practical shop utilities and toolmaker-built software connected to DATUM,
               but secondary to the writing and the work.
@@ -132,3 +136,32 @@ const utilityNotes = [
     </div>
   </body>
 </html>
+
+<style>
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 24px;
+    padding: 8px 14px;
+    border: 1px solid rgba(240, 164, 58, 0.5);
+    background:
+      linear-gradient(rgba(240, 164, 58, 0.08), rgba(240, 164, 58, 0.08)),
+      var(--color-surface);
+    box-shadow: var(--shadow-amber);
+    color: var(--color-amber);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--color-amber);
+    box-shadow: 0 0 10px rgba(240, 164, 58, 0.6);
+  }
+</style>
