@@ -48,17 +48,20 @@ const utilityNotes = [
       </header>
 
       <main>
-        <section class="page-hero" aria-labelledby="page-title">
-          <div>
+        <section class="page-hero cad-hero" aria-labelledby="page-title">
+          <div class="cad-hero-title">
             <p class="eyebrow">Tools from the bench</p>
             <h1 id="page-title">CADVANTAGE</h1>
+          </div>
+
+          <div class="cad-hero-copy">
             <p class="status-badge">
               <span class="status-dot" aria-hidden="true"></span>
               Coming Soon to Google Play
             </p>
             <p class="lead">
-              Practical shop utilities and toolmaker-built software connected to DATUM,
-              but secondary to the writing and the work.
+              A machinist's reference and calculator app for the shop floor, built by a
+              working tool and die maker.
             </p>
             <p class="body-copy">
               CADVANTAGE is the tools lane: calculators, setup thinking, live geometry,
@@ -66,7 +69,7 @@ const utilityNotes = [
             </p>
           </div>
 
-          <div class="hero-plate" aria-label="Abstract datum reference plate">
+          <div class="hero-plate cad-hero-plate" aria-label="Abstract datum reference plate">
             <span class="plate-label">Tools / Secondary lane</span>
           </div>
         </section>
@@ -138,6 +141,48 @@ const utilityNotes = [
 </html>
 
 <style>
+  /* Heading gets its own full-width row so the plate can never sit on top of it. */
+  .cad-hero {
+    grid-template-areas:
+      "title title"
+      "copy plate";
+    row-gap: 0;
+  }
+
+  .cad-hero-title {
+    grid-area: title;
+  }
+
+  .cad-hero-copy {
+    grid-area: copy;
+    align-self: start;
+  }
+
+  .cad-hero-plate {
+    grid-area: plate;
+    align-self: start;
+  }
+
+  @media (max-width: 860px) {
+    .cad-hero {
+      grid-template-areas:
+        "title"
+        "copy"
+        "plate";
+    }
+
+    .cad-hero-plate {
+      margin-top: clamp(32px, 6vw, 88px);
+    }
+  }
+
+  @media (max-width: 620px) {
+    /* Scale the one long word to the screen so it never runs off the edge on phones. */
+    .cad-hero h1 {
+      font-size: min(clamp(3.35rem, 18vw, 5rem), 13vw);
+    }
+  }
+
   .status-badge {
     display: inline-flex;
     align-items: center;
