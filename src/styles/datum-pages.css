@@ -35,6 +35,45 @@ body {
   color: var(--color-text);
 }
 
+/* Pages with a hero plate (Writing, Story, Book): one warm glow, centred on the
+   plate instead of the fixed 82% 8% body glow above. Same colour, 31rem radius
+   and falloff. The glow sits in the page's bottom layer (z-index -1, behind all
+   text), so these pages paint the rest of the body background on <html> and
+   leave <body> transparent. Pages without a plate keep the body glow. */
+html:has(.hero-plate) {
+  overflow-x: clip;
+  background:
+    linear-gradient(120deg, rgba(141, 150, 156, 0.045), transparent 30rem),
+    var(--color-bg);
+}
+
+/* Clip at the screen edge so the glow can never cause sideways scrolling. */
+body:has(.hero-plate) {
+  overflow-x: clip;
+  background: transparent;
+}
+
+.page-hero:has(> .hero-plate) {
+  position: relative;
+}
+
+/* The plate sits in column 2, row 1, aligned to the row's bottom, 310px tall.
+   End lines are explicit: for a positioned item an omitted end line means the
+   grid's padding edge, which would push the glow below the plate. */
+.page-hero:has(> .hero-plate)::after {
+  position: absolute;
+  z-index: -1;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  left: calc(50% - 31rem);
+  bottom: calc(155px - 31rem);
+  width: 62rem;
+  height: 62rem;
+  background: radial-gradient(circle closest-side, rgba(180, 106, 53, 0.14), transparent);
+  content: "";
+  pointer-events: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -533,6 +572,13 @@ button {
 
   .hero-plate {
     min-height: 280px;
+  }
+
+  /* Stacked: the plate drops to column 1, row 2, 280px tall. */
+  .page-hero:has(> .hero-plate)::after {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    bottom: calc(140px - 31rem);
   }
 }
 
