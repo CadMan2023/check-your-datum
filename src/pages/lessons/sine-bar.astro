@@ -1,0 +1,87 @@
+---
+import "../../styles/datum-pages.css";
+import "../../styles/site-build.css";
+import SineBarIsland from "../../components/SineBarIsland.astro";
+import { lessonTop, lessonBottom } from "../../lib/sine-bar-lesson.mjs";
+
+const navItems = [
+  { href: "/writing", label: "Writing" },
+  { href: "/story", label: "Story" },
+  { href: "/book", label: "Book" },
+  { href: "/cadvantage", label: "CADVANTAGE" },
+  { href: "#join", label: "Join" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sine Bar — Trade Lesson | DATUM</title>
+    <meta
+      name="description"
+      content="Learn why roll-center distance matters, explore a sine bar setup, and practice calculating stack height and angle."
+    />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="/" aria-label="DATUM home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DATUM</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </header>
+
+      <main>
+        <div class="datum-build">
+          <Fragment set:html={lessonTop()} />
+          <SineBarIsland />
+          <Fragment set:html={lessonBottom()} />
+        </div>
+
+        <section class="section" aria-labelledby="join-title" id="join">
+          <div class="join-block">
+            <div>
+              <p class="eyebrow">Tool notes</p>
+              <h2 id="join-title">Follow the build.</h2>
+              <p>
+                Bench Notes will carry practical updates as the tools lane becomes ready to show.
+              </p>
+            </div>
+
+            <!-- STUB: not wired to an email provider yet. Wiring is a separate ticket. -->
+            <form class="signup-form">
+              <label for="email">Email address</label>
+              <div class="form-row">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Thomas Craft &middot; checkyourdatum.com</p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  /* Sol's Reset 3 styles (site-build.css) apply inside .datum-build; the site's
+     header, join section and footer stay outside it on datum-pages.css. */
+  .datum-build {
+    background: none;
+  }
+
+  /* Lesson markup is injected HTML, so reach it with :global inside the wrapper. */
+  .datum-build :global(.section) {
+    border-bottom: 0;
+  }
+</style>

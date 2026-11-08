@@ -1,0 +1,8 @@
+---
+import { islandMarkup } from '../lib/sine-bar-lesson.mjs';
+---
+<Fragment set:html={islandMarkup()} />
+<script>
+  import { mountSineBar } from '../lib/sine-bar-client.mjs';
+  document.querySelectorAll('[data-sinebar]').forEach(mountSineBar);
+</script>
